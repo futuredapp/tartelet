@@ -88,7 +88,10 @@ swiftgen
 The `swiftgen.yml` file at the root of the repository describes how constants are generated.
 
 ### Configuring the project to run on your machine
-To run your project locally it is necessary to update the `Tartelet.entitlements` file, updating its `Keychain Access Groups` value to one you control. Then in the `CompositionRoot.swift` file you can update the `KeychainLive` definition with the same value. If you don't do this, the project will not be able to save preference values to the keychain.
+
+To run the project locally, it is necessary to edit the `Tartelet.entitlements` file to specify a keychain access group that you control. Then you will need to edit the `Composers.swift` file to ensure the keychain is initialized with the keychain access group specified in the entitlements file. If you do not do this, the app will not be able to persist settings to the keychain.
+
+In other words, you will need to search for `$(AppIdentifierPrefix)dk.shape.Tartelet` and `566MC7D8D4.dk.shape.Tartelet` in the project and replace the occurrences with references to your keychain access group.
 
 ### Linting the Codebase with SwiftLint
 
@@ -101,6 +104,8 @@ brew install swiftlint
 ## 🤨 Why is it named Tartelet?
 
 The app is named Tartelet because it builds upon [Tart](https://tart.run), a source-available CLI for managing macOS virtual machines. Tartelet makes it easy to run multiple virtual machines using Tart. The Danish word for "easy" is "let". "Tart" + "e" + "let" = "Tartelet" and [a "tartelet" is a traditional Danish food.](https://www.valdemarsro.dk/tarteletter-hoens-asparges/)
+
+<img src="Tartelet/Assets.xcassets/AppIcon.appiconset/Artboard_512x512.png?raw=true" width="192" />
 
 ## 🙏 Acknowledgements
 
